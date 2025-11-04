@@ -62,6 +62,7 @@ npm run dev
 ## Technologies Used
 
 ### Frontend
+
 - React with TypeScript
 - Vite
 - Tailwind CSS
@@ -69,6 +70,7 @@ npm run dev
 - Lucide Icons
 
 ### Backend
+
 - Django
 - Django REST Framework
 - MySQL/SQLite3
