@@ -1,77 +1,70 @@
 # Personal Portfolio
 
-This is my personal portfolio website built with React and Django.
+A static personal portfolio website built with React, TypeScript, and Tailwind CSS. Deployed on GitHub Pages.
+
+## Features
+
+- Responsive design with Tailwind CSS
+- TypeScript for type safety
+- Social links and contact information
+- Project showcase with GitHub links
+- Location information
+- Dark/Light theme support
 
 ## Project Structure
 
 - `frontend/` - React frontend built with Vite, TypeScript, and Tailwind CSS
-- `backend/` - Django REST API backend
+  - Components built with shadcn/ui
+  - Lucide icons for clean vector graphics
+  - Tailwind animations and transitions
 
 ## Quick Start
 
-### Backend Setup (Django)
+### Development
 
 ```powershell
-# Navigate to backend directory
-cd backend
 
-# Create and activate virtual environment
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-# Install requirements
-pip install -r requirements.txt
-
-# Copy environment file and update it
-copy .env.example .env
-# Edit .env with your settings
-
-# Run migrations
-python manage.py migrate
-
-# Start development server
-python manage.py runserver
 ```
 
-### Frontend Setup (React)
+### Building for Production
 
 ```powershell
 # Navigate to frontend directory
 cd frontend
 
-# Install dependencies
-npm install
+# Build the project
+npm run build
 
-# Create environment file
-copy .env.example .env
-# Set VITE_API_URL in .env to match your backend URL
-
-# Start development server
-npm run dev
+# Preview production build locally (optional)
+npm run preview
 ```
+
+### Deployment
+
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process:
+
+1. Pushes to the `main` branch trigger the GitHub Actions workflow
+2. The workflow builds the site and deploys to GitHub Pages
+3. The site is available at https://jeffy-sajan.github.io/jfy-portfolio/
 
 ## Features
 
 - Responsive single-page design
 - Sections for Home, About, Skills, Projects, Resume, and Contact
-- Contact form with email notifications
-- Projects showcase with filtering
+- Direct social media links (GitHub, LinkedIn)
+- Projects showcase with GitHub links
 - Resume download option
 - Modern UI with smooth animations
+- Dark/Light theme support
 
 ## Technologies Used
-
-### Frontend
 
 - React with TypeScript
 - Vite
 - Tailwind CSS
-- Radix UI Components
+- shadcn/ui Components
 - Lucide Icons
 
-### Backend
+## License
 
-- Django
-- Django REST Framework
-- MySQL/SQLite3
-- CORS Headers for API access
+This project is open source and available under the MIT License.

@@ -1,3 +1,7 @@
+# Ignore entire backend directory
+backend/
+backend_backup/
+
 # Python
 __pycache__/
 *.py[cod]
