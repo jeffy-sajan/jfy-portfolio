@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/jfy-portfolio/',  // Add this line - should match your repository name
   server: {
     host: "::",
     port: 8080,
