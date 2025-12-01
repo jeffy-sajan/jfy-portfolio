@@ -5,6 +5,11 @@ import { Download, Briefcase, GraduationCap } from "lucide-react";
 const Resume = () => {
   const experiences = [
     {
+      title: "Full Stack Developer intern",
+      company: "Doztix Groups, Kochi",
+      period: "November 2025 - Present",
+    },
+    {
       title: "Python Full Stack Developer",
       company: "Luminar Technolab, Kochi",
       period: "July 2023 - January 2024",
@@ -44,7 +49,10 @@ const Resume = () => {
               Resume
             </h2>
             <Button className="bg-accent hover:bg-accent/90" asChild>
-              <a href="/assets/docs/Jeffy`Sajan.pdf" download>
+              <a
+                href={import.meta.env.BASE_URL + "assets/docs/Jeffy`Sajan.pdf"}
+                download
+              >
                 <Download className="w-4 h-4 mr-2" />
                 Download CV
               </a>

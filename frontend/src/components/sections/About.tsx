@@ -45,7 +45,7 @@ const About = () => {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-card-hover">
                 <img
-                  src="/assets/img/JEFF PROFILE.jpg"
+                  src={import.meta.env.BASE_URL + "assets/img/JEFF PROFILE.jpg"}
                   alt="Jeffy Sajan"
                   className="w-full h-full object-cover"
                 />
