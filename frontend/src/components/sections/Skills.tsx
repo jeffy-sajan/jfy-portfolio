@@ -9,15 +9,19 @@ const Skills = () => {
     },
     {
       title: "Backend",
-      skills: ["Python", "Django", "REST API", "Node.js", "Express.js"],
+      skills: ["Python", "FastAPI", "Django", "Flask"],
     },
     {
       title: "Database",
-      skills: ["MySQL", "SQLite", "MongoDB"],
+      skills: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
     },
     {
-      title: "Tools & Others",
-      skills: ["Git", "AWS", "CI/CD", "Agile", "Cursor", "VS Code"],
+      title: "Testing & Tools",
+      skills: ["Pytest", "Jest", "Git", "GitHub", "Jira", "VS Code"],
+    },
+    {
+      title: "AI/ML",
+      skills: ["scikit‑learn", "TensorFlow", "spaCy", "NLTK"],
     },
   ];
 

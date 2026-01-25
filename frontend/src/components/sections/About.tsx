@@ -30,22 +30,21 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
             <div className="space-y-6 animate-fade-in">
               <p className="text-lg text-foreground/80 leading-relaxed">
-                I'm a passionate full-stack developer with expertise in building
-                modern web applications. With a strong foundation in both
-                frontend and backend technologies, I create seamless digital
-                experiences that solve real-world problems.
+                I’m a passionate software developer with expertise in backend systems and cross‑platform mobile
+                applications. Skilled in Python, FastAPI, React Native, GraphQL, and PostgreSQL, with experience in
+                Agile workflows using Jira. I enjoy building scalable solutions and collaborating across teams to
+                deliver production‑ready applications.
               </p>
               <p className="text-lg text-foreground/80 leading-relaxed">
-                My journey in software development has equipped me with a
-                diverse skill set and the ability to adapt to new technologies
-                quickly. I believe in writing clean, maintainable code and
-                always strive for excellence in every project I undertake.
+                My journey in software development has equipped me with a diverse skill set and the ability to adapt to
+                new technologies quickly. I believe in writing clean, maintainable code and always strive for excellence
+                in every project I undertake.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-card-hover">
                 <img
-                  src={import.meta.env.BASE_URL + "assets/img/JEFF PROFILE.jpg"}
+                  src={import.meta.env.BASE_URL + "assets/img/jfy.png"}
                   alt="Jeffy Sajan"
                   className="w-full h-full object-cover"
                 />

@@ -6,8 +6,9 @@ const Resume = () => {
   const experiences = [
     {
       title: "Full Stack Developer intern",
-      company: "Doztix Groups, Kochi",
+      company: "Doztix Group, Kochi",
       period: "November 2025 - Present",
+      description: "Focused on backend development using Python, FastAPI, Alembic, Pytest, and PostgreSQL. Designed GraphQL APIs, implemented database migrations, and collaborated with frontend team using React Native and TypeScript. Worked in Agile sprints with Jira for task management and GitHub for version control.",
     },
     {
       title: "Python Full Stack Developer",
