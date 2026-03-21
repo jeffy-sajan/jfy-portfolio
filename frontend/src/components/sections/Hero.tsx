@@ -1,117 +1,59 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Code2, Sparkles, Zap } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 
 const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-  };
+  const heroRef = useRef<HTMLElement | null>(null);
 
-  const highlights = [
-    { icon: Code2, text: "Full Stack Developer", color: "from-primary to-accent" },
-    { icon: Sparkles, text: "Creative Problem Solver", color: "from-accent to-secondary" },
-    { icon: Zap, text: "Tech Enthusiast", color: "from-secondary to-primary" },
-  ];
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const leftY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const centerY = useTransform(scrollYProgress, [0, 1], [0, 130]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [0, 70]);
+
+  const leftOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.85, 0.5]);
+  const centerOpacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 0.75, 0.2]);
+  const rightOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.88, 0.55]);
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0 gradient-mesh opacity-40 dark:opacity-20" />
-
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl animate-pulse-glow" />
-
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-12">
-          {/* Main Content */}
-          <div className="space-y-6 animate-slide-in-up">
-            <div className="inline-block">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium backdrop-blur-sm animate-scale-in">
-                <Sparkles className="w-4 h-4" />
-                Welcome to my portfolio
-              </span>
-            </div>
-
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight flex flex-col items-center justify-center gap-2">
-              <span className="text-foreground">Hi, I'm</span>
-              <span className="text-gradient inline-block animate-scale-in font-[Dancing_Script] p-2 tracking-wide text-6xl md:text-8xl lg:text-9xl" style={{ animationDelay: "0.2s" }}>
-                Jeffy Sajan
-              </span>
+    <section ref={heroRef} id="home" className="hero-canvas">
+      <div className="shell min-h-[100svh] pt-24 md:pt-28 pb-6">
+        <div className="hero-grid min-h-[80svh]">
+          <motion.div style={{ y: leftY, opacity: leftOpacity }} className="self-end pb-4 md:pb-10 space-y-5">
+            <h1 className="hero-left-title">
+              Strategic engineering for seamless, user-centered digital products
             </h1>
+          </motion.div>
 
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-in-up" style={{ animationDelay: "0.3s" }}>
-              Passionate about building{" "}
-              <span className="text-primary font-semibold">scalable solutions</span> and crafting{" "}
-              <span className="text-secondary font-semibold">exceptional user experiences</span>
+          <motion.div style={{ y: centerY, opacity: centerOpacity }} className="hero-center-wrap self-end">
+            <div className="hero-portrait-shell">
+              <img
+                src={import.meta.env.BASE_URL + "assets/img/jfy-transparent.png"}
+                alt="Jeffy Sajan"
+                className="hero-portrait-image"
+              />
+              <div className="hero-portrait-fade" />
+            </div>
+          </motion.div>
+
+          <motion.div style={{ y: rightY, opacity: rightOpacity }} className="self-end pb-8 md:pb-14 space-y-6 hero-right-col">
+            <p className="hero-right-copy">
+              Building polished interfaces and reliable backend systems for teams that ship fast and scale with confidence.
             </p>
-          </div>
 
-          {/* Highlight Cards */}
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {highlights.map((item, index) => (
-              <div
-                key={index}
-                className="group relative p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 animate-slide-in-up"
-                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-              >
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                <item.icon className="w-8 h-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform duration-300" />
-                <p className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Buttons - Improved Visibility */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in-up" style={{ animationDelay: "0.7s" }}>
-            <Button
-              size="lg"
-              className="group relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-glow transition-all duration-300 px-8 py-6 text-lg"
-              onClick={() => scrollToSection("projects")}
-            >
-              <span className="relative z-10 flex items-center gap-2 font-semibold">
-                View My Work
-                <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
-              </span>
+            <Button asChild className="h-14 rounded-[1.1rem] px-8 text-[18px] font-medium shadow-[0_14px_32px_-20px_rgba(0,0,0,0.6)]">
+              <a href="mailto:jeffysajan9400@gmail.com">
+                Email Me
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="group border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8 py-6 text-lg bg-transparent hover:border-transparent"
-              onClick={() => scrollToSection("contact")}
-            >
-              <span className="flex items-center gap-2 font-semibold">
-                Get In Touch
-                <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              </span>
-            </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Stylish Scroll Indicator */}
-      <button
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 group flex flex-col items-center gap-2 text-primary/60 hover:text-primary transition-colors duration-300"
-        aria-label="Scroll to about section"
-      >
-        <span className="text-sm font-medium tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">SCROLL</span>
-        <div className="w-6 h-10 border-2 border-current rounded-full p-1">
-          <div className="w-1.5 h-1.5 bg-current rounded-full animate-bounce mx-auto" />
-        </div>
-      </button>
     </section>
   );
 };
