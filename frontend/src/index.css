@@ -347,6 +347,88 @@
     transform: translateZ(24px);
   }
 
+  .work-journey {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding-left: 1.6rem;
+  }
+
+  .work-journey::before {
+    content: "";
+    position: absolute;
+    left: 0.48rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 2px;
+    border-radius: 100px;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--accent) / 0.65) 0%,
+      hsl(var(--accent) / 0.35) 50%,
+      hsl(var(--border)) 100%
+    );
+  }
+
+  .work-item {
+    position: relative;
+    padding-left: 0.55rem;
+  }
+
+  .work-item-dot {
+    position: absolute;
+    left: -1.55rem;
+    top: 1.2rem;
+    width: 0.86rem;
+    height: 0.86rem;
+    border-radius: 9999px;
+    background: hsl(var(--accent));
+    box-shadow:
+      0 0 0 5px hsl(var(--background)),
+      0 0 0 7px hsl(var(--accent) / 0.3),
+      0 0 18px hsl(var(--accent) / 0.6);
+  }
+
+  .work-item-body {
+    border-radius: 1.2rem;
+    border: 1px solid hsl(var(--border) / 0.75);
+    background:
+      radial-gradient(100% 120% at 100% -10%, hsl(var(--accent) / 0.16), transparent 55%),
+      linear-gradient(150deg, hsl(var(--card) / 0.94), hsl(var(--card) / 0.78));
+    padding: 1rem 1.1rem 1.1rem;
+    box-shadow: 0 18px 32px -26px hsl(var(--foreground) / 0.5);
+    transform: translateX(var(--work-shift, 0px));
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .work-item:hover .work-item-body {
+    transform: translateX(calc(var(--work-shift, 0px) + 6px)) translateY(-3px);
+    border-color: hsl(var(--accent) / 0.45);
+    box-shadow: 0 24px 36px -24px hsl(var(--foreground) / 0.62);
+  }
+
+  .work-item-period {
+    font-size: 0.78rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: hsl(var(--accent));
+  }
+
+  .work-item-role {
+    margin-top: 0.42rem;
+    font-size: clamp(1.04rem, 1.5vw, 1.24rem);
+    line-height: 1.2;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+  }
+
+  .work-item-company {
+    margin-top: 0.22rem;
+    font-size: 0.95rem;
+    color: hsl(var(--foreground) / 0.76);
+  }
+
   .help-container {
     position: relative;
     display: flex;
@@ -412,6 +494,15 @@
       margin: 0 -18px;
       max-width: 290px;
       min-height: 280px;
+    }
+
+    .work-journey {
+      gap: 1.15rem;
+      padding-left: 1.85rem;
+    }
+
+    .work-item-body {
+      padding: 1.15rem 1.2rem 1.2rem;
     }
   }
 

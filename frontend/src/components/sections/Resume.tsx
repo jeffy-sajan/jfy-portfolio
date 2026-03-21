@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, Download, GraduationCap } from "lucide-react";
 
 const workExperience = [
   {
@@ -69,15 +70,26 @@ const cardVariant = {
 };
 
 const Resume = () => {
+  const resumeHref = `${import.meta.env.BASE_URL}assets/docs/Jeffy_Sajan_SE.pdf`;
+
   return (
     <section id="resume" className="section-gap">
       <div className="shell">
-        <div className="mb-8 md:mb-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Career</p>
-          <h2 className="section-title mt-3">Work experience and education</h2>
-          <p className="section-subtitle mt-3 max-w-2xl">
-            Professional roles and academic background that shaped my software engineering journey.
-          </p>
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Career</p>
+            <h2 className="section-title mt-3">Work experience and education</h2>
+            <p className="section-subtitle mt-3 max-w-2xl">
+              Professional roles and academic background that shaped my software engineering journey.
+            </p>
+          </div>
+
+          <Button variant="outline" asChild className="rounded-full bg-card/70 backdrop-blur-md">
+            <a href={resumeHref} download="Jeffy_Sajan_Resume.pdf">
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
+            </a>
+          </Button>
         </div>
 
         <div className="space-y-6 md:space-y-8">
@@ -87,23 +99,27 @@ const Resume = () => {
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Work Experience</h3>
             </div>
             <motion.div
-              className="grid md:grid-cols-2 xl:grid-cols-3 gap-4"
+              className="work-journey"
               variants={listVariant}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.2 }}
             >
-              {workExperience.map((job) => (
-                <motion.div key={`${job.role}-${job.company}`} variants={cardVariant}>
-                  <Card className="flat-card border-none soft-hover h-full">
-                    <CardContent className="p-6">
-                      <p className="text-sm font-semibold uppercase tracking-wide text-primary">{job.period}</p>
-                      <h4 className="text-xl font-bold mt-2">{job.role}</h4>
-                      <p className="section-subtitle mt-1">{job.company}</p>
-                      {job.description ? <p className="section-subtitle mt-4">{job.description}</p> : null}
-                    </CardContent>
-                  </Card>
-                </motion.div>
+              {workExperience.map((job, idx) => (
+                <motion.article
+                  key={`${job.role}-${job.company}`}
+                  variants={cardVariant}
+                  className="work-item"
+                  style={{ ["--work-shift" as string]: idx % 2 === 0 ? "0px" : "10px" }}
+                >
+                  <span className="work-item-dot" />
+                  <div className="work-item-body">
+                    <p className="work-item-period">{job.period}</p>
+                    <h4 className="work-item-role">{job.role}</h4>
+                    <p className="work-item-company">{job.company}</p>
+                    {job.description ? <p className="section-subtitle mt-3">{job.description}</p> : null}
+                  </div>
+                </motion.article>
               ))}
             </motion.div>
           </div>
