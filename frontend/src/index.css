@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cinzel:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -265,8 +265,8 @@
     }
 
     .help-glass {
-      margin: 0 -28px;
-      max-width: 320px;
+      margin: 0 -18px;
+      max-width: 290px;
       min-height: 280px;
     }
   }
@@ -282,6 +282,37 @@
     justify-self: center;
     width: 100%;
     max-width: 520px;
+  }
+
+  .hero-portrait-caption {
+    position: absolute;
+    left: 50%;
+    bottom: 1.6rem;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+    width: 100%;
+    padding: 0 1rem;
+    pointer-events: none;
+  }
+
+  .hero-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.35rem, 2.15vw, 2.15rem);
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: hsl(var(--foreground) / 0.97);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+  }
+
+  .hero-role {
+    font-family: 'Cinzel', serif;
+    margin-top: 0.2rem;
+    font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--foreground) / 0.78);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
   }
 
   .hero-portrait-shell {
@@ -352,11 +383,12 @@
       grid-template-columns: 1fr;
       gap: 1.5rem;
       align-items: start;
+      min-height: auto;
     }
 
     .hero-center-wrap,
     .hero-right-col {
-      justify-self: start;
+      justify-self: center;
       max-width: 100%;
     }
 
@@ -365,8 +397,19 @@
       height: min(540px, 65vh);
     }
 
+    .hero-left-title {
+      max-width: 100%;
+      font-size: clamp(1.8rem, 8.2vw, 2.7rem);
+      line-height: 1.1;
+    }
+
     .hero-right-copy {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 4.6vw, 1.2rem);
+      max-width: 42ch;
+    }
+
+    .hero-portrait-caption {
+      bottom: 1.2rem;
     }
   }
 }
