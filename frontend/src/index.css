@@ -94,8 +94,22 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(1200px 620px at 8% -10%, hsl(var(--accent) / 0.12), transparent 62%),
+      radial-gradient(900px 520px at 92% 0%, hsl(var(--primary) / 0.08), transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.96) 100%);
+    background-attachment: fixed;
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .dark body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(1100px 620px at 10% -5%, hsl(var(--accent) / 0.2), transparent 60%),
+      radial-gradient(900px 520px at 88% 2%, hsl(215 30% 22% / 0.48), transparent 62%),
+      linear-gradient(180deg, hsl(222 24% 9%) 0%, hsl(222 22% 7%) 100%);
   }
 }
 
@@ -200,7 +214,137 @@
 
   .hero-canvas {
     @apply relative overflow-hidden;
-    background: hsl(var(--background));
+    background: transparent;
+  }
+
+  .arsenal-tilt-wrap {
+    perspective: 1100px;
+  }
+
+  .arsenal-tilt-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+    overflow: hidden;
+  }
+
+  .arsenal-tilt-wrap:hover .arsenal-tilt-card {
+    transform: rotateX(9deg) rotateY(var(--arsenal-tilt-y, -8deg)) translateY(-10px);
+    box-shadow: 0 28px 48px -30px hsl(var(--foreground) / 0.6);
+  }
+
+  .arsenal-tilt-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--accent) / 0.55), transparent 55%, hsl(var(--primary) / 0.45));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .arsenal-tilt-wrap:hover .arsenal-tilt-card::before {
+    opacity: 0.9;
+  }
+
+  .arsenal-tilt-card::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 240%;
+    top: -70%;
+    left: -60%;
+    transform: rotate(22deg);
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: transform 0.65s ease, opacity 0.65s ease;
+    pointer-events: none;
+  }
+
+  .arsenal-tilt-wrap:hover .arsenal-tilt-card::after {
+    opacity: 1;
+    transform: translateX(260%) rotate(22deg);
+  }
+
+  .arsenal-lift {
+    transform: translateZ(24px);
+  }
+
+  .arsenal-icon-float {
+    animation: arsenal-icon-float 2.8s ease-in-out infinite;
+  }
+
+  @keyframes arsenal-icon-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .project-card-shell {
+    perspective: 1200px;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border) / 0.65);
+    background:
+      radial-gradient(120% 110% at 100% -12%, hsl(var(--accent) / 0.16), transparent 54%),
+      linear-gradient(145deg, hsl(var(--card) / 0.95), hsl(var(--card) / 0.78));
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease,
+      border-color 0.45s ease;
+    transform-style: preserve-3d;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    background: linear-gradient(130deg, hsl(var(--accent) / 0.35), transparent 42%, hsl(var(--primary) / 0.2));
+  }
+
+  .project-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -35%;
+    width: 52%;
+    height: 320%;
+    transform: rotate(18deg);
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.28), transparent);
+  }
+
+  .project-card-shell:hover .project-card {
+    transform: rotateX(7deg) rotateY(var(--project-tilt, -5deg)) translateY(-9px);
+    border-color: hsl(var(--accent) / 0.4);
+    box-shadow: 0 26px 44px -28px hsl(var(--foreground) / 0.65);
+  }
+
+  .project-card-shell:hover .project-card::before {
+    opacity: 1;
+  }
+
+  .project-card-shell:hover .project-card::after {
+    opacity: 1;
+    transform: translateX(245%) rotate(18deg);
+  }
+
+  .project-card-content {
+    transform: translateZ(24px);
   }
 
   .help-container {

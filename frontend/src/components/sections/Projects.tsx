@@ -41,9 +41,14 @@ const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {projects.map((project) => (
-            <Card key={project.title} className="flat-card border-none soft-hover">
-              <CardContent className="p-6 flex flex-col h-full">
+          {projects.map((project, idx) => (
+            <div
+              key={project.title}
+              className="project-card-shell"
+              style={{ ["--project-tilt" as string]: idx % 2 === 0 ? "-6deg" : "6deg" }}
+            >
+              <Card className="flat-card project-card border-none">
+                <CardContent className="p-6 flex flex-col h-full project-card-content">
                 <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
                 <p className="section-subtitle mt-2">{project.summary}</p>
 
@@ -69,8 +74,9 @@ const Projects = () => {
                     </a>
                   </Button>
                 </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

@@ -76,18 +76,23 @@ const TechnicalSkills = () => {
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
         >
-          {categories.map((category) => (
-            <motion.div key={category.title} variants={cardVariant}>
-              <Card className="flat-card border-none soft-hover h-full bg-card/90 backdrop-blur-sm">
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="h-11 w-11 rounded-xl bg-muted grid place-items-center">
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              variants={cardVariant}
+              className="arsenal-tilt-wrap"
+              style={{ ["--arsenal-tilt-y" as string]: index % 2 === 0 ? "-8deg" : "8deg" }}
+            >
+              <Card className="flat-card border-none soft-hover h-full bg-card/90 backdrop-blur-sm arsenal-tilt-card">
+                <CardContent className="p-6 flex flex-col h-full relative z-10">
+                  <div className="h-11 w-11 rounded-xl bg-muted grid place-items-center arsenal-lift arsenal-icon-float">
                     <category.icon className="h-5 w-5 text-foreground" />
                   </div>
 
-                  <h3 className="text-2xl font-bold mt-4">{category.title}</h3>
-                  <p className="section-subtitle mt-2">{category.description}</p>
+                  <h3 className="text-2xl font-bold mt-4 arsenal-lift">{category.title}</h3>
+                  <p className="section-subtitle mt-2 arsenal-lift">{category.description}</p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-5 flex flex-wrap gap-2 arsenal-lift">
                     {category.skills.map((skill) => (
                       <Badge key={skill} variant="secondary" className="rounded-full bg-muted/85 text-foreground border border-border/70">
                         {skill}
