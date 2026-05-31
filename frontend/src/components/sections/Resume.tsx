@@ -7,9 +7,9 @@ const workExperience = [
   {
     role: "Full Stack Developer intern",
     company: "Doztix Group, Kochi",
-    period: "November 2025 - Present",
+    period: "November 2025 - May 2026",
     description:
-      "Focused on backend development using Python, FastAPI, Alembic, Pytest, and PostgreSQL. Designed GraphQL APIs, implemented database migrations, and collaborated with frontend team using React Native and TypeScript. Worked in Agile sprints with Jira for task management and GitHub for version control.",
+      "Contributed end-to-end to the Lifexpy mobile app by building responsive React Native screens from UI wireframes and developing core FastAPI services. Implemented REST APIs, managed PostgreSQL schema migrations with Alembic, and integrated Redis caching to improve response times. Wrote Pytest coverage and resolved cross-stack issues to strengthen performance, stability, and scalability in Agile sprint workflows.",
   },
   {
     role: "Python Web Developer",
