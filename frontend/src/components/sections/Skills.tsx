@@ -24,7 +24,7 @@ const Skills = () => {
       <div className="shell">
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Services</p>
-          <h2 className="section-title mt-3">How I can help</h2>
+          <h2 className="section-title mt-3 gradient-text">How I can help</h2>
         </div>
 
         <div className="help-container">

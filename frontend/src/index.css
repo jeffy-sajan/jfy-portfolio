@@ -89,6 +89,15 @@
     @apply border-border;
   }
 
+  ::selection {
+    background: hsl(var(--accent) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -140,6 +149,170 @@
 
   .section-subtitle {
     @apply text-sm md:text-base text-muted-foreground leading-relaxed;
+  }
+
+  /* ── Cursor glow ─────────────────────────────── */
+  .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.18) 0%, transparent 70%);
+    mix-blend-mode: screen;
+    transition: opacity 0.4s ease;
+  }
+
+  .dark .cursor-glow {
+    background: radial-gradient(circle, hsl(var(--accent) / 0.22) 0%, transparent 70%);
+  }
+
+  :root .cursor-glow {
+    mix-blend-mode: soft-light;
+  }
+
+  .dark .cursor-glow {
+    mix-blend-mode: screen;
+  }
+
+  /* ── Gradient text shimmer ──────────────────── */
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--accent)) 30%,
+      hsl(var(--foreground)) 60%,
+      hsl(var(--accent)) 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ── Glow border on hover ───────────────────── */
+  .glow-border {
+    transition: box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+
+  .glow-border:hover {
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow:
+      0 0 20px -6px hsl(var(--accent) / 0.25),
+      0 24px 44px -28px hsl(var(--foreground) / 0.55);
+  }
+
+  /* ── Floating particles ─────────────────────── */
+  .floating-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floating-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: hsl(var(--accent));
+    animation: float-particle linear infinite;
+  }
+
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: var(--dot-opacity, 0.08);
+    }
+    25% {
+      transform: translateY(-30px) translateX(calc(var(--drift, 10px) * 0.5));
+    }
+    50% {
+      transform: translateY(-50px) translateX(var(--drift, 10px));
+      opacity: calc(var(--dot-opacity, 0.08) * 1.6);
+    }
+    75% {
+      transform: translateY(-25px) translateX(calc(var(--drift, 10px) * 0.3));
+    }
+  }
+
+  /* ── Magnetic wrapper ───────────────────────── */
+  .magnetic-wrap {
+    display: inline-flex;
+    perspective: 600px;
+    will-change: transform;
+  }
+
+  /* ── Stat counter card ──────────────────────── */
+  .stat-card {
+    @apply rounded-2xl border border-border/70 p-5 text-center;
+    background:
+      radial-gradient(100% 140% at 50% -20%, hsl(var(--accent) / 0.1), transparent 60%),
+      hsl(var(--card) / 0.92);
+    backdrop-filter: blur(6px);
+  }
+
+  .stat-number {
+    font-family: 'Manrope', monospace;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: hsl(var(--foreground));
+  }
+
+  .stat-label {
+    margin-top: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* ── Nav active indicator ───────────────────── */
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 2px;
+  }
+
+  .nav-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 1px;
+    background: hsl(var(--accent));
+  }
+
+  /* ── Project number badge ───────────────────── */
+  .project-number {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.2rem;
+    font-family: 'Manrope', monospace;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: hsl(var(--foreground) / 0.04);
+    pointer-events: none;
+    z-index: 0;
+    transition: color 0.45s ease;
+  }
+
+  .project-card-shell:hover .project-number {
+    color: hsl(var(--accent) / 0.12);
   }
 
   .entry-loader-screen {
@@ -223,14 +396,13 @@
 
   .arsenal-tilt-card {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     overflow: hidden;
   }
 
   .arsenal-tilt-wrap:hover .arsenal-tilt-card {
-    transform: rotateX(9deg) rotateY(var(--arsenal-tilt-y, -8deg)) translateY(-10px);
-    box-shadow: 0 28px 48px -30px hsl(var(--foreground) / 0.6);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px -16px hsl(var(--foreground) / 0.4);
   }
 
   .arsenal-tilt-card::before {
@@ -297,10 +469,9 @@
       radial-gradient(120% 110% at 100% -12%, hsl(var(--accent) / 0.16), transparent 54%),
       linear-gradient(145deg, hsl(var(--card) / 0.95), hsl(var(--card) / 0.78));
     transition:
-      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.45s ease,
-      border-color 0.45s ease;
-    transform-style: preserve-3d;
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
   }
 
   .project-card::before {
@@ -329,9 +500,9 @@
   }
 
   .project-card-shell:hover .project-card {
-    transform: rotateX(7deg) rotateY(var(--project-tilt, -5deg)) translateY(-9px);
+    transform: translateY(-6px);
     border-color: hsl(var(--accent) / 0.4);
-    box-shadow: 0 26px 44px -28px hsl(var(--foreground) / 0.65);
+    box-shadow: 0 16px 32px -16px hsl(var(--foreground) / 0.4);
   }
 
   .project-card-shell:hover .project-card::before {

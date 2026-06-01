@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { useRef } from "react";
+import FloatingParticles from "@/components/FloatingParticles";
+import MagneticButton from "@/components/MagneticButton";
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement | null>(null);
@@ -22,7 +24,8 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} id="home" className="hero-canvas">
-      <div className="shell min-h-[100svh] pt-24 md:pt-28 pb-6">
+      <FloatingParticles />
+      <div className="shell min-h-[100svh] pt-24 md:pt-28 pb-6 relative z-[1]">
         <div className="hero-grid min-h-[80svh]">
           <motion.div style={{ y: leftY, opacity: leftOpacity }} className="order-2 lg:order-1 self-end pb-2 md:pb-10 space-y-4 md:space-y-5">
             <p className="text-[0.78rem] uppercase tracking-[0.22em] font-semibold text-muted-foreground">Full-Stack Developer</p>
@@ -52,12 +55,14 @@ const Hero = () => {
                   <span>LinkedIn</span>
                 </a>
               </Button>
-              <Button asChild className="hero-action-button">
-                <a href="#contact">
-                  <span>Contact Me</span>
-                  <ArrowRight className="h-4 w-4 shrink-0" />
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button asChild className="hero-action-button w-full">
+                  <a href="#contact">
+                    <span>Contact Me</span>
+                    <ArrowRight className="h-4 w-4 shrink-0" />
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
           </motion.div>
 
@@ -81,12 +86,14 @@ const Hero = () => {
               Building polished user interfaces and reliable backend systems that help teams ship faster, reduce bottlenecks, and scale confidently.
             </p>
 
-            <Button asChild className="h-12 md:h-14 rounded-[1rem] md:rounded-[1.1rem] px-6 md:px-8 text-[15px] md:text-[18px] font-medium shadow-[0_14px_32px_-20px_rgba(0,0,0,0.6)]">
-              <a href="mailto:jeffysajan9400@gmail.com">
-                Email Me
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
+            <MagneticButton>
+              <Button asChild className="h-12 md:h-14 rounded-[1rem] md:rounded-[1.1rem] px-6 md:px-8 text-[15px] md:text-[18px] font-medium shadow-[0_14px_32px_-20px_rgba(0,0,0,0.6)]">
+                <a href="mailto:jeffysajan9400@gmail.com">
+                  Email Me
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+            </MagneticButton>
           </motion.div>
         </div>
       </div>

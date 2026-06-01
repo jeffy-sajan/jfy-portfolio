@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import ScrollSection from "@/components/ScrollSection";
+import CursorGlow from "@/components/CursorGlow";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
@@ -12,23 +13,36 @@ import TechnicalSkills from "@/components/sections/TechnicalSkills";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <CursorGlow />
       <Navigation />
       <main>
         <ScrollSection amount={0.25}>
           <Hero />
         </ScrollSection>
 
-        <About />
+        <ScrollSection direction="up">
+          <About />
+        </ScrollSection>
 
-        <Skills />
+        <ScrollSection direction="left">
+          <Skills />
+        </ScrollSection>
 
-        <TechnicalSkills />
+        <ScrollSection direction="right">
+          <TechnicalSkills />
+        </ScrollSection>
 
-        <Projects />
+        <ScrollSection direction="up">
+          <Projects />
+        </ScrollSection>
 
-        <Resume />
+        <ScrollSection direction="left">
+          <Resume />
+        </ScrollSection>
 
-        <Contact />
+        <ScrollSection direction="right">
+          <Contact />
+        </ScrollSection>
       </main>
       <Footer />
     </div>

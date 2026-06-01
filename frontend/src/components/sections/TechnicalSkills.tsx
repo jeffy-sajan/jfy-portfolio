@@ -63,7 +63,7 @@ const TechnicalSkills = () => {
       <div className="shell">
         <div className="mb-8 md:mb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Technical Arsenals</p>
-          <h2 className="section-title mt-3">Technical skills and tooling stack</h2>
+          <h2 className="section-title mt-3 gradient-text">Technical skills and tooling stack</h2>
           <p className="section-subtitle mt-3 max-w-2xl">
             A curated set of technologies I use to build scalable and efficient solutions.
           </p>

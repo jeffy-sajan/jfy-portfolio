@@ -78,7 +78,7 @@ const Resume = () => {
         <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Career</p>
-            <h2 className="section-title mt-3">Work experience and education</h2>
+            <h2 className="section-title mt-3 gradient-text">Work experience and education</h2>
             <p className="section-subtitle mt-3 max-w-2xl">
               Professional roles and academic background that shaped my software engineering journey.
             </p>
