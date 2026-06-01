@@ -18,10 +18,11 @@ const projects = [
     code: "https://github.com/jeffy-sajan/CareerLink.git",
   },
   {
-    title: "CycleHub",
-    summary: "E-commerce experience for bikes and accessories with simple checkout flow.",
-    tags: ["Django", "SQLite", "Bootstrap"],
-    code: "https://github.com/jeffy-sajan/cyclehub.git",
+    title: "PrepArena",
+    summary: "AI-powered web application for practicing debates and mock interviews through interactive simulations.",
+    tags: ["React", "FastAPI", "GraphQL", "MongoDB", "Gemini API"],
+    code: "https://github.com/jeffy-sajan/preparena-ai.git",
+    live: "https://preparena-frontend.onrender.com/",
   },
 ];
 
@@ -45,10 +46,10 @@ const Projects = () => {
           {projects.map((project, idx) => (
             <div
               key={project.title}
-              className="project-card-shell"
+              className="project-card-shell h-full"
               style={{ ["--project-tilt" as string]: idx % 2 === 0 ? "-6deg" : "6deg" }}
             >
-              <Card className="flat-card project-card border-none">
+              <Card className="flat-card project-card border-none h-full">
                 <CardContent className="p-6 flex flex-col h-full project-card-content">
                 <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
                 <p className="section-subtitle mt-2">{project.summary}</p>
@@ -61,7 +62,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="mt-6 flex gap-2">
+                <div className="mt-auto pt-6 flex gap-2">
                   <Button variant="outline" className="rounded-full bg-card" asChild>
                     <a href={project.code} target="_blank" rel="noopener noreferrer">
                       <Github className="h-4 w-4 mr-2" />
