@@ -8,19 +8,20 @@ const projects = [
     title: "MockMate",
     summary: "AI-powered mock interview platform with guided role-based practice.",
     tags: ["React", "Node.js", "MongoDB", "Gemini API"],
-    link: "https://github.com/jeffy-sajan/MockMate.git",
+    code: "https://github.com/jeffy-sajan/MockMate.git",
+    live: "https://mock-mateapp.vercel.app/",
   },
   {
     title: "Career-Link",
     summary: "Job portal product connecting candidates with employers and hiring flows.",
     tags: ["Django", "MySQL", "Bootstrap"],
-    link: "https://github.com/jeffy-sajan/CareerLink.git",
+    code: "https://github.com/jeffy-sajan/CareerLink.git",
   },
   {
     title: "CycleHub",
     summary: "E-commerce experience for bikes and accessories with simple checkout flow.",
     tags: ["Django", "SQLite", "Bootstrap"],
-    link: "https://github.com/jeffy-sajan/cyclehub.git",
+    code: "https://github.com/jeffy-sajan/cyclehub.git",
   },
 ];
 
@@ -62,13 +63,13 @@ const Projects = () => {
 
                 <div className="mt-6 flex gap-2">
                   <Button variant="outline" className="rounded-full bg-card" asChild>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <a href={project.code} target="_blank" rel="noopener noreferrer">
                       <Github className="h-4 w-4 mr-2" />
                       Code
                     </a>
                   </Button>
                   <Button className="rounded-full" asChild>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <a href={project.live ?? project.code} target="_blank" rel="noopener noreferrer">
                       Open
                       <ArrowUpRight className="h-4 w-4 ml-2" />
                     </a>
